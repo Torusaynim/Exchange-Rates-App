@@ -5,5 +5,24 @@ services:
     container_name: php-apache
     volumes:
       - ./src:/var/www/html
+      - ./php-apache/logs:/var/log/apache2
     ports:
       - "80:80"
+    depends_on:
+      - appdb
+      
+  appdb:
+    image: mysql:5.7
+    container_name: appdb
+    command:
+      --default-authentication-plugin=mysql_native_password
+    volumes:
+      - appdbfile:/var/lib/mysql
+      - ./sql:/docker-entrypoint-initdb.d
+    environment:
+      MYSQL_ROOT_PASSWORD: secret
+    ports:
+      - "3307:3306"
+      
+volumes:
+  appdbfile:
