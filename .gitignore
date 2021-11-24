@@ -1,2 +1,5 @@
 # apache log files
 php-apache/logs
+
+# functionality test
+src/test.php
