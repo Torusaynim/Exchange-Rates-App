@@ -14,3 +14,13 @@ CREATE TABLE IF NOT EXISTS `users` (
   `e-balance` int DEFAULT 0,
   PRIMARY KEY (`id`)
 );
+
+-- CRYPTO RATES
+
+USE appDB;
+CREATE TABLE IF NOT EXISTS `rates` (
+  `id` int NOT NULL AUTO_INCREMENT,
+  `price` varchar(20) NOT NULL,
+  `posted` DATETIME NOT NULL,
+  PRIMARY KEY (`id`)
+);

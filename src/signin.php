@@ -40,7 +40,7 @@ if (isset($_POST['submit']))
 <html lang="ru" class="h-100">
 <head>
   <meta charset="utf-8">
-  <title>Bogged Stock Exchange | Sign in</title>
+  <title>Bogged Crypto Exchange | Sign in</title>
   <!-- Bootstrap core CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
   <style>
@@ -89,7 +89,7 @@ if (isset($_POST['submit']))
     
 <main class="form-signin">
   <form action="signin.php" method="POST">
-    <h1 class="h3 mb-3 fw-normal">Sign in existing account</h1>
+    <h1 class="h3 mb-3 fw-normal">Log in existing account</h1>
 
     <div class="form-floating">
       <input type="text" class="form-control" id="floatingInput" name="login" placeholder="login">
@@ -103,7 +103,7 @@ if (isset($_POST['submit']))
       $info_input = isset($info_input) ? $info_input : NULL;
       if (isset($info_input)) echo "<div class='alert alert-danger' role='alert'>{$info_input}</div>";	  
     ?>
-    <input class="w-100 btn btn-lg btn-primary" type="submit" value="Login" name="submit">
+    <input class="w-100 btn btn-lg btn-primary" type="submit" value="Sign in" name="submit">
     <p class="mt-5 mb-3 text-muted">© Torusaynim, 2021</p>
   </form>
 </main>
