@@ -27,36 +27,80 @@ if (isset($_POST['submit']))
         $query = "INSERT INTO `users` (login, password) VALUES ('$login', '$password')";
         $result = mysqli_query($connection, $query) or die(mysqli_error($connection));
         
-        header('Location: login.php');
+        header('Location: signin.php');
     }
 }
-
-$info_reg = isset($info_reg) ? $info_reg : NULL;
-echo $info_reg;
 ?>
 
-<html>
+<html lang="ru" class="h-100">
 <head>
-    <meta http-equiv="content-type" content="text/html; charset=UTF-8" />
-    <title>Bogged Stock Exchange | Registration</title>
+  <meta charset="utf-8">
+  <title>Bogged Stock Exchange | Sign up</title>
+  <!-- Bootstrap core CSS -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+  <style>
+    html,
+    body {
+      height: 100%;
+    }
+
+    body {
+      display: flex;
+      align-items: center;
+      padding-top: 40px;
+      padding-bottom: 40px;
+      background-color: #f5f5f5;
+    }
+
+    .form-signin {
+      width: 100%;
+      max-width: 330px;
+      padding: 15px;
+      margin: auto;
+    }
+
+    .form-signin .checkbox {
+      font-weight: 400;
+    }
+
+    .form-signin .form-floating:focus-within {
+      z-index: 2;
+    }
+
+    .form-signin input[type="email"] {
+      margin-bottom: -1px;
+      border-bottom-right-radius: 0;
+      border-bottom-left-radius: 0;
+    }
+
+    .form-signin input[type="password"] {
+      margin-bottom: 10px;
+      border-top-left-radius: 0;
+      border-top-right-radius: 0;
+    }
+  </style>
 </head>
-<body>
+<body class="text-center">
+    
+<main class="form-signin">
+  <form action="signup.php" method="POST">
+    <h1 class="h3 mb-3 fw-normal">Create a new account</h1>
 
-<form action="signup.php" method="POST" />
-    <table>
-        <tr>
-            <td>Login:</td>
-            <td><input type="text" size="20" name="login" /></td>
-        </tr>
-        <tr>
-            <td>Password:</td>
-            <td><input type="password" size="20" maxlength="35" name="password" /></td>
-        </tr>
-        <tr>
-            <td colspan="2"><input class="button" type="submit" value="Register" name="submit" /></td>
-        </tr>
-    </table>
-</form>
-
+    <div class="form-floating">
+      <input type="text" class="form-control" id="floatingInput" maxlength="20" name="login" placeholder="login">
+      <label for="floatingInput">Login</label>
+    </div>
+    <div class="form-floating">
+      <input type="password" class="form-control" id="floatingPassword" maxlength="35" name="password" placeholder="Password">
+      <label for="floatingPassword">Password</label>
+    </div>
+    <?php
+      $info_reg = isset($info_reg) ? $info_reg : NULL;
+      if (isset($info_reg)) echo "<div class='alert alert-danger' role='alert'>{$info_reg}</div>";	  
+    ?>
+	<input class="w-100 btn btn-lg btn-primary" type="submit" value="Sign up" name="submit">
+    <p class="mt-5 mb-3 text-muted">© Torusaynim, 2021</p>
+  </form>
+</main>
 </body>
 </html>
