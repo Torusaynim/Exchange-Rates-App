@@ -1,39 +1,38 @@
 <?php
 session_start();
 
-
 $connection = mysqli_connect("appdb", "user", "password", "appDB") or die(mysqli_error());
 
 if (isset($_POST['submit'])) 
 {
-    if (empty($_POST['login'])) 
+  if (empty($_POST['login'])) 
+  {
+    $info_input = 'Login is empty';
+  }
+  elseif (empty($_POST['password'])) 
+  {
+    $info_input = 'Password is empty';
+  }
+  else 
+  {    
+    $login = $_POST['login'];
+    $password = $_POST['password'];            
+    $user = mysqli_query($connection, "SELECT `id` FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
+    $id_user = mysqli_fetch_array($user);
+        
+    if (empty($id_user['id'])) 
     {
-        $info_input = 'Login is empty';
-    }
-    elseif (empty($_POST['password'])) 
-    {
-        $info_input = 'Password is empty';
+      $info_input = 'Wrong login/password or this user doesn&#039;t exist';
     }
     else 
-    {    
-        $login = $_POST['login'];
-        $password = $_POST['password'];            
-        $user = mysqli_query($connection, "SELECT `id` FROM `users` WHERE `login` = '$login' AND `password` = '$password'");
-        $id_user = mysqli_fetch_array($user);
-        
-        if (empty($id_user['id'])) 
-        {
-            $info_input = 'Wrong login/password or this user doesn&#039;t exist';
-        }
-        else 
-        {
-            $_SESSION['password'] = $password; 
-            $_SESSION['login'] = $login; 
-            $_SESSION['id'] = $id_user['id']; 
+    {
+      $_SESSION['password'] = $password; 
+      $_SESSION['login'] = $login; 
+      $_SESSION['id'] = $id_user['id']; 
 
-            header('Location: index.html');         
-        }     
-    }
+      header('Location: index.html');         
+    }     
+  }
 }
 ?>
 
@@ -104,7 +103,7 @@ if (isset($_POST['submit']))
       $info_input = isset($info_input) ? $info_input : NULL;
       if (isset($info_input)) echo "<div class='alert alert-danger' role='alert'>{$info_input}</div>";	  
     ?>
-	<input class="w-100 btn btn-lg btn-primary" type="submit" value="Login" name="submit">
+    <input class="w-100 btn btn-lg btn-primary" type="submit" value="Login" name="submit">
     <p class="mt-5 mb-3 text-muted">© Torusaynim, 2021</p>
   </form>
 </main>
