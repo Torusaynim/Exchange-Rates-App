@@ -2,7 +2,7 @@
 <html lang="ru" class="h-100">
 <head>
   <!-- Meta tags -->
-  <title>Bogged Crypto Exchange | Home</title>
+  <title>Bogged Crypto Exchange | Exchange Rates</title>
   <meta charset="utf-8">
   <!-- Bootstrap CSS -->
   <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
@@ -20,7 +20,7 @@
       <div class="collapse navbar-collapse" id="navbarCollapse">
         <ul class="navbar-nav me-auto mb-2 mb-md-0">
           <li class="nav-item">
-            <a class="nav-link" href="exchange.php">Exchange Rates</a>
+            <a class="nav-link active" href="exchange.php">Exchange Rates</a>
           </li>
           <li class="nav-item">
             <a class="nav-link disabled">Predictions</a>
@@ -41,8 +41,15 @@
 <!-- Begin page content -->
 <main class="flex-shrink-0">
   <div class="container" style="padding-top: 60px">
-    <h1 class="mt-5">Welcome to our totally not rigged stock exchange!</h1>
-    <p class="lead">Buy low - sell high or... sell low after buying high, I don't know why would you do that but no one will judge or laugh at you for that here.</p>
+    <h1 class="mt-5">VIT/RUB - Exchange rates for Vitalium cryptocurrency</h1>
+	<iframe src="chart/linegraph.html" width="100%" height="660px" align="left">
+      Your browser doesn't support iframes!
+    </iframe>
+	<p class="lead">
+	  <?php
+	    echo "Trading UI [temporary]";
+	  ?>
+	</p>
   </div>
 </main>
 
