@@ -26,11 +26,11 @@ if (isset($_POST['submit']))
     }
     else 
     {
-      $_SESSION['password'] = $password; 
-      $_SESSION['login'] = $login; 
+      # $_SESSION['password'] = $password; 
+      # $_SESSION['login'] = $login; 
       $_SESSION['id'] = $id_user['id']; 
 
-      header('Location: index.html');         
+      header('Location: exchange.php');         
     }     
   }
 }
@@ -100,8 +100,8 @@ if (isset($_POST['submit']))
       <label for="floatingPassword">Password</label>
     </div>
     <?php
-      $info_input = isset($info_input) ? $info_input : NULL;
-      if (isset($info_input)) echo "<div class='alert alert-danger' role='alert'>{$info_input}</div>";	  
+    $info_input = isset($info_input) ? $info_input : NULL;
+    if (isset($info_input)) echo "<div class='alert alert-danger' role='alert'>{$info_input}</div>";	  
     ?>
     <input class="w-100 btn btn-lg btn-primary" type="submit" value="Sign in" name="submit">
     <p class="mt-5 mb-3 text-muted">© Torusaynim, 2021</p>

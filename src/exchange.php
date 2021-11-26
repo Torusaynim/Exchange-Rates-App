@@ -1,3 +1,10 @@
+<?php
+session_start();
+
+$connection = mysqli_connect("appdb", "user", "password", "appDB") or die(mysqli_error());
+
+?>
+
 <!doctype html>
 <html lang="ru" class="h-100">
 <head>
@@ -8,6 +15,9 @@
     .chart-container {
       width: 100%;
       height: auto;
+    }
+    ::-webkit-scrollbar {
+    width: 0;
     }
   </style>
   <!-- Bootstrap CSS -->
@@ -46,16 +56,32 @@
 
 <!-- Begin page content -->
 <main class="flex-shrink-0">
-  <div class="container" style="padding-top: 60px">
-    <h1 class="mt-5">VIT/RUB - Exchange rates for Vitalium cryptocurrency</h1>
+  <div class="container" style="padding-top: 60px; padding-bottom: 20px">
+    <h1 class="mt-5">VIT/RUB - Exchange rates for Vitalium</h1>
     <div class="chart-container">
       <canvas id="mycanvas"></canvas>
     </div>
-	<p class="lead">
-	  <?php
-	    echo "Trading UI [temporary]";
-	  ?>
-	</p>
+    <h1 class="mt-3">Trading Menu</h1>
+    <div class="input-group" style="margin-top: 15px">
+      <div class="input-group-prepend" style="margin-right: 4px">
+        <span class="input-group-text" style="text-weight: bold">VIT</span>
+      </div>
+      <input type="text" class="form-control" placeholder="Choose amount of Vitalium" aria-label="Choose amount of Vitalium" aria-describedby="basic-addon2">
+      <div class="input-group-append" style="margin-left: 4px">
+        <button class="btn btn-outline-success" type="button">Buy</button>
+        <button class="btn btn-outline-danger" type="button">Sell</button>
+      </div>
+    </div>
+    <p class="lead" style="margin-top: 5px">
+    <?php
+    if (isset($_SESSION['id']))
+    {
+      echo "You have successfully logged in as User#".$_SESSION['id'];
+    }
+    else echo "You haven't logged into system, please log into existing account or create a new account by pressing corresponding button at the navigation bar.";
+    ?>
+    </p>
+    <a class="btn btn-outline-danger btn-lg w-100" href='signout.php'>Sign out</a>
   </div>
 </main>
 

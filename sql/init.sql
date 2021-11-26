@@ -24,3 +24,8 @@ CREATE TABLE IF NOT EXISTS `rates` (
   `posted` DATETIME NOT NULL,
   PRIMARY KEY (`id`)
 );
+
+SET GLOBAL event_scheduler = ON;
+
+CREATE EVENT update_rates ON SCHEDULE EVERY 1 MINUTE
+DO INSERT INTO rates(price, posted) VALUES(ROUND((RAND() * (3000 - 300)) + 300), NOW());
