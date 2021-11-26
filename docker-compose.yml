@@ -16,6 +16,7 @@ services:
     container_name: appdb
     command:
       --default-authentication-plugin=mysql_native_password
+      --event_scheduler=1
     volumes:
       - appdbfile:/var/lib/mysql
       - ./sql/init.sql:/docker-entrypoint-initdb.d/init.sql
