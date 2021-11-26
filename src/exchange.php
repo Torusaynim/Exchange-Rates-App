@@ -41,7 +41,7 @@ $connection = mysqli_connect("appdb", "user", "password", "appDB") or die(mysqli
           <li class="nav-item">
             <a class="nav-link disabled">Predictions</a>
           </li>
-	      <li class="nav-item">
+          <li class="nav-item">
             <a class="nav-link" href="about.html">About</a>
           </li>
         </ul>

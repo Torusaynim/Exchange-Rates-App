@@ -96,7 +96,7 @@ if (isset($_POST['submit']))
     </div>
     <?php
     $info_reg = isset($info_reg) ? $info_reg : NULL;
-    if (isset($info_reg)) echo "<div class='alert alert-danger' role='alert'>{$info_reg}</div>";	  
+    if (isset($info_reg)) echo "<div class='alert alert-danger' role='alert'>{$info_reg}</div>";
     ?>
     <input class="w-100 btn btn-lg btn-primary" type="submit" value="Sign up" name="submit">
     <p class="mt-5 mb-3 text-muted">© Torusaynim, 2021</p>
