@@ -129,8 +129,8 @@ elseif (isset($_POST['sell']))
           </li>
         </ul>
         <div class="text-end">
-          <a class="btn btn-outline-light me-2" href="signin.php">Sign in</a>
-          <a class="btn btn-primary" href="signup.php">Sign up</a>
+          <a class="btn btn-outline-light me-2" href="signin.html">Sign in</a>
+          <a class="btn btn-primary" href="signup.html">Sign up</a>
         </div>
       </div>
     </div>
