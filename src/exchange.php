@@ -11,6 +11,8 @@ $connection = mysqli_connect("appdb", "user", "password", "appDB") or die(mysqli
   <!-- Meta tags -->
   <title>Bogged Crypto Exchange | Exchange Rates</title>
   <meta charset="utf-8">
+  <!--auto refresh page every minute(not smooth)-->
+  <meta http-equiv="refresh" content="60">
   <style>
     .chart-container {
       width: 100%;
@@ -56,22 +58,24 @@ $connection = mysqli_connect("appdb", "user", "password", "appDB") or die(mysqli
 
 <!-- Begin page content -->
 <main class="flex-shrink-0">
-  <div class="container" style="padding-top: 60px; padding-bottom: 20px">
+  <div class="container" style="padding-top: 60px; padding-bottom: 60px">
     <h1 class="mt-5">VIT/RUB - Exchange rates for Vitalium</h1>
     <div class="chart-container">
       <canvas id="mycanvas"></canvas>
     </div>
     <h1 class="mt-3">Trading Menu</h1>
-    <div class="input-group" style="margin-top: 15px">
-      <div class="input-group-prepend" style="margin-right: 4px">
-        <span class="input-group-text" style="text-weight: bold">VIT</span>
+    <form action="exchange.php" method="POST">
+      <div class="input-group" style="margin-top: 15px">
+        <div class="input-group-prepend" style="margin-right: 4px">
+          <span class="input-group-text" style="text-weight: bold">VIT</span>
+        </div>
+        <input type="text" class="form-control" placeholder="Choose amount of Vitalium" aria-label="Choose amount of Vitalium" aria-describedby="basic-addon2">
+        <div class="input-group-append" style="margin-left: 4px">
+          <input class="btn btn-outline-success" type="submit" name="buy" value="Buy">
+          <input class="btn btn-outline-danger" type="submit" name="sell" value="Sell">
+        </div>
       </div>
-      <input type="text" class="form-control" placeholder="Choose amount of Vitalium" aria-label="Choose amount of Vitalium" aria-describedby="basic-addon2">
-      <div class="input-group-append" style="margin-left: 4px">
-        <button class="btn btn-outline-success" type="button">Buy</button>
-        <button class="btn btn-outline-danger" type="button">Sell</button>
-      </div>
-    </div>
+    </form>
     <p class="lead" style="margin-top: 5px">
     <?php
     if (isset($_SESSION['id']))
