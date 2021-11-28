@@ -1,88 +1,6 @@
 <?php
+
 session_start();
-
-$connection = mysqli_connect("appdb", "user", "password", "appDB") or die(mysqli_error());
-
-if (isset($_POST['buy']))
-{
-    if (!isset($_SESSION['id']))
-    {
-    $info_msg = 'You didn&#039;t log in';
-    }
-    elseif (empty($_POST['amount'])) 
-    {
-    $info_msg = 'Amount is empty';
-    }
-    elseif ($_POST['amount'] <= 0)
-    {
-    $info_msg = 'Amount must be positive';
-    }
-    else
-    {
-    $amount = $_POST['amount'];
-    $data = mysqli_query($connection, "SELECT * FROM rates ORDER BY id DESC LIMIT 1");
-    foreach ($data as $row)
-    {
-    $price = $row['price'];
-    }
-    $data = mysqli_query($connection, "SELECT * FROM users WHERE id={$_SESSION['id']}");
-    foreach ($data as $row)
-    {
-    $balance = $row['balance'];
-    $ebalance = $row['e-balance'];
-    }
-    if ($price * $amount > $balance)
-    {
-    $info_msg = 'You don&#039;t have enough money for that';
-    }
-    else
-    {
-    $balance = $balance - $amount*$price;
-    $ebalance = $ebalance + $amount;
-    mysqli_query($connection, "UPDATE users SET balance={$balance}, `e-balance`={$ebalance} WHERE id={$_SESSION['id']}") or die(mysqli_error($connection));
-    }
-    }
-}
-elseif (isset($_POST['sell']))
-{
-    if (!isset($_SESSION['id']))
-    {
-    $info_msg = 'You didn&#039;t log in';
-    }
-    elseif (empty($_POST['amount'])) 
-    {
-    $info_msg = 'Amount is empty';
-    }
-    elseif ($_POST['amount'] <= 0)
-    {
-    $info_msg = 'Amount must be positive';
-    }
-    else
-    {
-    $amount = $_POST['amount'];
-    $data = mysqli_query($connection, "SELECT * FROM rates ORDER BY id DESC LIMIT 1");
-    foreach ($data as $row)
-    {
-    $price = $row['price'];
-    }
-    $data = mysqli_query($connection, "SELECT * FROM users WHERE id={$_SESSION['id']}");
-    foreach ($data as $row)
-    {
-    $balance = $row['balance'];
-    $ebalance = $row['e-balance'];
-    }
-    if ($amount > $ebalance)
-    {
-    $info_msg = 'You don&#039;t have enough Vitalium for that';
-    }
-    else
-    {
-    $balance = $balance + $amount*$price;
-    $ebalance = $ebalance - $amount;
-    mysqli_query($connection, "UPDATE users SET balance={$balance}, `e-balance`={$ebalance} WHERE id={$_SESSION['id']}") or die(mysqli_error($connection));
-    }
-    }
-}
 
 ?>
 
@@ -145,7 +63,7 @@ elseif (isset($_POST['sell']))
       <canvas id="mycanvas"></canvas>
     </div>
     <h1 class="mt-3">Trading Menu</h1>
-    <form action="exchange.php" method="POST">
+    <form action="controllers/exchange.php" method="POST">
       <div class="input-group" style="margin-top: 15px">
         <div class="input-group-prepend" style="margin-right: 4px">
           <span class="input-group-text" style="text-weight: bold">VIT</span>
@@ -159,6 +77,9 @@ elseif (isset($_POST['sell']))
     </form>
     <p class="lead" style="margin-top: 5px">
     <?php
+    
+    $connection = mysqli_connect("appdb", "user", "password", "appDB") or die(mysqli_error());
+    
     if (isset($_SESSION['id']))
     {
       $data = mysqli_query($connection, "SELECT * FROM users WHERE id={$_SESSION['id']}");
@@ -170,7 +91,8 @@ elseif (isset($_POST['sell']))
     
     $info_msg = isset($info_msg) ? $info_msg : NULL;
     if (isset($info_msg)) echo "<div class='alert alert-danger' role='alert'>{$info_msg}</div>";
-    ?>
+    
+	?>
     </p>
     <a class="btn btn-outline-danger btn-lg w-100" href='signout.php'>Sign out</a>
   </div>
