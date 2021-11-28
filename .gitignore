@@ -1,3 +1,5 @@
+.idea/
+
 # apache log files
 php-apache/logs
 

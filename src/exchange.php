@@ -89,8 +89,7 @@ session_start();
     }
     else echo "You haven't logged into system, please log into existing account or create a new account by pressing corresponding button at the navigation bar";
     
-    $info_msg = isset($info_msg) ? $info_msg : NULL;
-    if (isset($info_msg)) echo "<div class='alert alert-danger' role='alert'>{$info_msg}</div>";
+    # add <div class='alert alert-danger' role='alert'>{$info_msg}</div> output later
     
 	?>
     </p>
