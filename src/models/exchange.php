@@ -15,7 +15,7 @@ elseif (empty($_POST['amount']))
 {
   $info_msg = 'Amount is empty';
 }
-elseif ($_POST['amount'] < 0)
+elseif ($_POST['amount'] <= 0)
 {
   $info_msg = 'Amount must be positive';
 }
