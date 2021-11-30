@@ -1,9 +1,9 @@
-$(document).ready(function(){
+$(document).ready(function linegraph(){
   $.ajax({
     url : "http://localhost/chart/exchangedata.php",
     type : "GET",
     success : function(data){
-      console.log(data);
+      // console.log(data);
 
       var price = [];
       var posted = [];
@@ -33,11 +33,18 @@ $(document).ready(function(){
 
       var LineGraph = new Chart(ctx, {
         type: 'line',
-        data: chartdata
+        data: chartdata,
+        options: {
+          animation: {
+            duration: 0
+          }
+        }
       });
     },
     error : function(data) {
 
     }
+  }).then(function() {              // on completion, restart
+      setTimeout(linegraph, 1000);  // function refers to itself
   });
 });

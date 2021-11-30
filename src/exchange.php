@@ -10,8 +10,6 @@ session_start();
   <!-- Meta tags -->
   <title>Bogged Crypto Exchange | Exchange Rates</title>
   <meta charset="utf-8">
-  <!--auto refresh page every minute(not smooth)-->
-  <meta http-equiv="refresh" content="60">
   <style>
     .chart-container {
       width: 100%;
@@ -91,7 +89,7 @@ session_start();
     
     # add <div class='alert alert-danger' role='alert'>{$info_msg}</div> output later
     
-	?>
+    ?>
     </p>
     <a class="btn btn-outline-danger btn-lg w-100" href='signout.php'>Sign out</a>
   </div>
