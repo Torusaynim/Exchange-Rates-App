@@ -63,14 +63,10 @@ session_start();
     <h1 class="mt-3">Trading Menu</h1>
     <form action="controllers/exchange.php" method="POST">
       <div class="input-group" style="margin-top: 15px">
-        <div class="input-group-prepend" style="margin-right: 4px">
-          <span class="input-group-text" style="text-weight: bold">VIT</span>
-        </div>
+        <span class="input-group-text" style="text-weight: bold">VIT</span>
         <input type="number" class="form-control" name="amount" placeholder="Choose amount of Vitalium" aria-label="Choose amount of Vitalium" aria-describedby="basic-addon2">
-        <div class="input-group-append" style="margin-left: 4px">
-          <input class="btn btn-outline-success" type="submit" name="buy" value="Buy">
-          <input class="btn btn-outline-danger" type="submit" name="sell" value="Sell">
-        </div>
+        <input class="btn btn-outline-success" type="submit" name="buy" value="Buy">
+        <input class="btn btn-outline-danger" type="submit" name="sell" value="Sell">
       </div>
     </form>
     <p class="lead" style="margin-top: 5px">
